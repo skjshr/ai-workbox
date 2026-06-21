@@ -32,6 +32,15 @@ A relevant tester matches at least two:
 | T2 |  |  | README / Preview Pack / Both |  |  |  |  |  |
 | T3 |  |  | README / Preview Pack / Both |  |  |  |  |  |
 
+## Run Evidence Buckets
+
+Use the smallest true bucket:
+
+- `none`: did not run anything
+- `smoke`: ran `try-smoke.ps1`
+- `doctor`: ran `doctor nextjs`
+- `workbox`: ran `run/inspect/stop` around a real command
+
 ## Signal Rules
 
 Good:
@@ -39,7 +48,7 @@ Good:
 - Can describe when they would run it.
 - Has experienced stuck Node/dev-server/port confusion.
 - Asks for a packaged zip or setup guide.
-- Runs `workbox --help`, `inspect`, or `doctor nextjs`.
+- Runs `try-smoke.ps1`, `inspect`, or `doctor nextjs`.
 - Says a Japanese troubleshooting guide would be useful.
 
 Weak:
