@@ -70,3 +70,5 @@ Within 30 days, continue commercializing only if one is true:
 - A hiring/interview conversation reacts positively to the technical story.
 
 If none happens, keep AI Workbox as a career OSS/tooling project and do not build a paid package yet.
+
+Record results in [tester-validation-log.md](tester-validation-log.md). Use anonymized tester IDs only.

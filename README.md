@@ -127,6 +127,7 @@ See [docs/verification.md](docs/verification.md).
 - [v0.1.0 preview release notes](docs/release-notes-v0.1.0-preview.md)
 - [Commercial validation](docs/commercial-validation.md)
 - [Market test](docs/market-test.md)
+- [Tester validation log](docs/tester-validation-log.md)
 - [Paid preview checklist JP](docs/paid-preview-checklist-jp.md)
 - [Tester outreach JP](docs/tester-outreach-jp.md)
 - [Career story](docs/career-story.md)

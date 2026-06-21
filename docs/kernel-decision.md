@@ -208,3 +208,9 @@ Completion should require at least:
 ```text
 AI Workbox published or privately tested, and external signal proves whether it should continue as money/career core.
 ```
+
+Record external signal in:
+
+```text
+docs/tester-validation-log.md
+```
