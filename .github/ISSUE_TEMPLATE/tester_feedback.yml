@@ -1,0 +1,58 @@
+name: Tester feedback
+description: Preview tester feedback
+title: "feedback: "
+labels: ["feedback"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for testing. Please do not include private project paths, secrets, company-owned information, or screenshots containing credentials.
+  - type: checkboxes
+    id: environment
+    attributes:
+      label: Environment
+      options:
+        - label: Windows main machine
+        - label: Uses Node/npm
+        - label: Uses Next.js
+        - label: Uses Codex / Claude Code / Cursor / another AI coding tool
+  - type: checkboxes
+    id: commands
+    attributes:
+      label: Commands tried
+      options:
+        - label: workbox --help
+        - label: workbox run
+        - label: workbox list
+        - label: workbox inspect
+        - label: workbox doctor nextjs
+        - label: workbox stop
+        - label: workbox prune
+  - type: textarea
+    id: understood
+    attributes:
+      label: What did you understand this tool is for?
+    validations:
+      required: true
+  - type: textarea
+    id: use_case
+    attributes:
+      label: When would you use it?
+    validations:
+      required: true
+  - type: dropdown
+    id: paid_pack
+    attributes:
+      label: Would a paid Japanese setup/troubleshooting pack be useful?
+      options:
+        - "No"
+        - "Maybe"
+        - "Yes, around 980 JPY"
+        - "Yes, around 1,480 JPY"
+        - "Yes, around 2,980 JPY"
+    validations:
+      required: true
+  - type: textarea
+    id: confusing
+    attributes:
+      label: What was confusing or missing?

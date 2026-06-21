@@ -34,6 +34,8 @@ Use this before publishing AI Workbox or packaging a zip for testers.
 - `.\scripts\public-check.ps1` passes.
 - Public docs do not include local usernames or private project paths.
 - Local verification notes are kept outside the public repo when necessary.
+- GitHub Actions `ci` should pass after publish.
+- Issue templates should warn testers not to paste secrets or private paths.
 
 ## Public Copy
 

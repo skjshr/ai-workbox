@@ -122,6 +122,7 @@ See [docs/verification.md](docs/verification.md).
 - [Security policy](SECURITY.md)
 - [Verification](docs/verification.md)
 - [Release checklist](docs/release-checklist.md)
+- [Public launch plan](docs/public-launch-plan.md)
 - [Commercial validation](docs/commercial-validation.md)
 - [Market test](docs/market-test.md)
 - [Paid preview checklist JP](docs/paid-preview-checklist-jp.md)

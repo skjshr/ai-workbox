@@ -1,0 +1,54 @@
+name: Bug report
+description: Report a reproducible AI Workbox problem
+title: "bug: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not paste secrets, private source code, `.env` files, browser profile data, company-owned information, or full private paths.
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: AI Workbox version or commit.
+      placeholder: "0.1.0-local / commit hash"
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Windows version
+      placeholder: "Windows 11 23H2"
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: Command
+      description: Redact private paths and secrets.
+      render: powershell
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: dropdown
+    id: boundary
+    attributes:
+      label: Is this a security isolation expectation?
+      options:
+        - "No, this is process lifecycle behavior."
+        - "Maybe. I am not sure."
+        - "Yes. I expected sandbox/security isolation."
+    validations:
+      required: true
