@@ -11,11 +11,50 @@ It is not a security sandbox.
 AI coding tools make it easy to leave behind dev servers, Node processes, child processes, and unclear runtime state. AI Workbox gives those tasks a local lifecycle:
 
 ```powershell
-workbox run --name web -- npm run dev
+workbox run --name web -- cmd /c "npm run dev"
 workbox list
 workbox inspect web
 workbox stop web
 ```
+
+## Try The Preview Pack
+
+For tester feedback, use the self-contained win-x64 Preview Pack:
+
+```text
+https://github.com/skjshr/ai-workbox/releases/tag/v0.1.0-preview
+```
+
+Unzip it, then run:
+
+```powershell
+.\try-smoke.ps1
+```
+
+That script runs:
+
+- `bin\workbox.exe --help`
+- a short named smoke workbox
+- `list`
+- `prune`
+
+No .NET Runtime install is required for the Preview Pack.
+
+To try it in a Node or Next.js project:
+
+```powershell
+<preview-pack>\bin\workbox.exe run --name web -- cmd /c "npm run dev"
+<preview-pack>\bin\workbox.exe inspect web
+<preview-pack>\bin\workbox.exe stop web
+```
+
+To inspect an existing Next.js dev-server state without stopping it:
+
+```powershell
+<preview-pack>\bin\workbox.exe doctor nextjs --path C:\dev\example-next-app
+```
+
+Tester feedback is tracked in [issue #1](https://github.com/skjshr/ai-workbox/issues/1).
 
 ## Safety Boundary
 
@@ -38,24 +77,23 @@ v0 does not:
 - modify the registry
 - require admin rights
 
-## Build
+## Build From Source
 
 ```powershell
 dotnet build .\ai-workbox.sln
 ```
 
-## Publish A Local Test Zip
+## Package A Local Preview Pack
 
 ```powershell
-dotnet publish .\src\AiWorkbox.Cli\AiWorkbox.Cli.csproj -c Release -r win-x64 --self-contained false -o .\artifacts\win-x64
-Compress-Archive -Path .\artifacts\win-x64\* -DestinationPath .\artifacts\ai-workbox-v0-win-x64.zip -Force
+.\scripts\package-preview.ps1 -Version "0.1.0-local"
 ```
 
 ## Run From Source
 
 ```powershell
 dotnet run --project .\src\AiWorkbox.Cli -- list
-dotnet run --project .\src\AiWorkbox.Cli -- run --name smoke --timeout-seconds 5 -- pwsh -NoProfile -Command "Start-Sleep -Seconds 2; 'done'"
+dotnet run --project .\src\AiWorkbox.Cli -- run --name smoke --timeout-seconds 5 -- powershell.exe -NoProfile -Command "Start-Sleep -Seconds 2; 'done'"
 ```
 
 ## Commands
