@@ -165,6 +165,7 @@ See [docs/verification.md](docs/verification.md).
 - [v0.1.0 preview release notes](docs/release-notes-v0.1.0-preview.md)
 - [Commercial validation](docs/commercial-validation.md)
 - [Market test](docs/market-test.md)
+- [Market signal map](docs/market-signal-map.md)
 - [Tester validation log](docs/tester-validation-log.md)
 - [Validation next actions JP](docs/validation-next-actions-jp.md)
 - [Public tester call](docs/public-tester-call.md)
