@@ -201,7 +201,7 @@ Not completed:
 - market demand is not verified
 - no tester has validated use case
 - no paid interest or sale exists
-- no public GitHub/release exists yet
+- public GitHub/release exists, but external response is not verified yet
 
 Completion should require at least:
 
@@ -214,3 +214,31 @@ Record external signal in:
 ```text
 docs/tester-validation-log.md
 ```
+
+## Public Publish Evidence
+
+Published:
+
+```text
+https://github.com/skjshr/ai-workbox
+```
+
+Preview release:
+
+```text
+https://github.com/skjshr/ai-workbox/releases/tag/v0.1.0-preview
+```
+
+CI:
+
+```text
+https://github.com/skjshr/ai-workbox/actions/runs/27901542571
+```
+
+Result:
+
+```text
+completed / success
+```
+
+The remaining completion blocker is external signal, not publishing infrastructure.
