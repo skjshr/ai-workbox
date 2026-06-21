@@ -130,3 +130,4 @@ See [docs/verification.md](docs/verification.md).
 - [Paid preview checklist JP](docs/paid-preview-checklist-jp.md)
 - [Tester outreach JP](docs/tester-outreach-jp.md)
 - [Career story](docs/career-story.md)
+- [Kernel decision](docs/kernel-decision.md)
