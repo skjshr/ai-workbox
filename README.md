@@ -128,6 +128,8 @@ See [docs/verification.md](docs/verification.md).
 - [Commercial validation](docs/commercial-validation.md)
 - [Market test](docs/market-test.md)
 - [Tester validation log](docs/tester-validation-log.md)
+- [Validation next actions JP](docs/validation-next-actions-jp.md)
+- [Public tester call](docs/public-tester-call.md)
 - [Paid preview checklist JP](docs/paid-preview-checklist-jp.md)
 - [Tester outreach JP](docs/tester-outreach-jp.md)
 - [Career story](docs/career-story.md)

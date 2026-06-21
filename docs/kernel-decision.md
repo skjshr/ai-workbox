@@ -229,10 +229,16 @@ Preview release:
 https://github.com/skjshr/ai-workbox/releases/tag/v0.1.0-preview
 ```
 
+Tester call:
+
+```text
+https://github.com/skjshr/ai-workbox/issues/1
+```
+
 CI:
 
 ```text
-https://github.com/skjshr/ai-workbox/actions/runs/27901542571
+https://github.com/skjshr/ai-workbox/actions/runs/27901573376
 ```
 
 Result:
@@ -242,3 +248,29 @@ completed / success
 ```
 
 The remaining completion blocker is external signal, not publishing infrastructure.
+
+## Anti-Evidence-Drift Rule
+
+Do not continue by collecting nicer evidence.
+
+No more work is needed on:
+
+- local proof logs
+- README polish for its own sake
+- extra release notes
+- extra architecture docs
+- broader feature ideas
+
+Those are allowed only when a tester fails because of a specific missing explanation or a real run exposes a missing behavior.
+
+The only next evidence that matters is:
+
+```text
+qualified human response -> understood / ran / paid-pack signal / rejected with reason
+```
+
+If there is no external signal yet, the correct status is:
+
+```text
+public and technically credible, commercially unvalidated
+```
