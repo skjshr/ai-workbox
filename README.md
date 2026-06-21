@@ -122,4 +122,5 @@ See [docs/verification.md](docs/verification.md).
 - [Release checklist](docs/release-checklist.md)
 - [Commercial validation](docs/commercial-validation.md)
 - [Market test](docs/market-test.md)
+- [Paid preview checklist JP](docs/paid-preview-checklist-jp.md)
 - [Career story](docs/career-story.md)

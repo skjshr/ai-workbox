@@ -111,6 +111,10 @@ Pass:
   - 3 serious testers
   - a clear portfolio/interview story emerges
 
+## Paid Preview Gate
+
+See [paid-preview-checklist-jp.md](paid-preview-checklist-jp.md) before selling a zip or guide.
+
 ## Kill Conditions
 
 Stop commercializing if:
