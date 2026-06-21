@@ -112,6 +112,8 @@ See [docs/verification.md](docs/verification.md).
 ## Recipes
 
 - [Next.js](docs/nextjs-recipe.md)
+- [Preview Guide JP](docs/preview-guide-jp.md)
+- [Feedback Form JP](docs/feedback-form-jp.md)
 
 ## Project Docs
 
@@ -123,4 +125,5 @@ See [docs/verification.md](docs/verification.md).
 - [Commercial validation](docs/commercial-validation.md)
 - [Market test](docs/market-test.md)
 - [Paid preview checklist JP](docs/paid-preview-checklist-jp.md)
+- [Tester outreach JP](docs/tester-outreach-jp.md)
 - [Career story](docs/career-story.md)

@@ -27,6 +27,7 @@ Use this before publishing AI Workbox or packaging a zip for testers.
 - `artifacts/ai-workbox-v0-win-x64.zip` is rebuilt from the latest Release output.
 - Zip contains `workbox.exe`, `.dll`, `.deps.json`, `.runtimeconfig.json`.
 - Zip is marked as local/test if not publicly released.
+- `.\scripts\package-preview.ps1` creates a tester Preview Pack zip when needed.
 
 ## Public Repo Check
 
