@@ -54,6 +54,14 @@ To inspect an existing Next.js dev-server state without stopping it:
 <preview-pack>\bin\workbox.exe doctor nextjs --path C:\dev\example-next-app
 ```
 
+To keep a tray monitor open:
+
+```powershell
+<preview-pack>\bin\workbox-tray.exe
+```
+
+The tray app watches named workboxes started by the CLI. It lists boxes, inspects process trees, stops named boxes after confirmation, and prunes inactive records. It does not scan and kill unrelated processes.
+
 Tester feedback is tracked in [issue #1](https://github.com/skjshr/ai-workbox/issues/1).
 
 ## Safety Boundary
@@ -166,6 +174,8 @@ See [docs/verification.md](docs/verification.md).
 - [Commercial validation](docs/commercial-validation.md)
 - [Market test](docs/market-test.md)
 - [Market signal map](docs/market-signal-map.md)
+- [Tray use cases](docs/tray-use-cases.md)
+- [Tray test plan](docs/tray-test-plan.md)
 - [Tester validation log](docs/tester-validation-log.md)
 - [Validation next actions JP](docs/validation-next-actions-jp.md)
 - [Public tester call](docs/public-tester-call.md)

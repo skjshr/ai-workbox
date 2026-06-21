@@ -16,6 +16,11 @@ try {
         exit $LASTEXITCODE
     }
 
+    dotnet publish ".\src\AiWorkbox.Tray\AiWorkbox.Tray.csproj" -c Release -r win-x64 --self-contained:$selfContained -o ".\artifacts\win-x64"
+    if ($LASTEXITCODE -ne 0) {
+        exit $LASTEXITCODE
+    }
+
     if (Test-Path -Path $packageRoot) {
         Remove-Item -Path $packageRoot -Recurse -Force
     }
@@ -33,6 +38,8 @@ try {
     Copy-Item -Path ".\docs\feedback-form-jp.md" -Destination (Join-Path $packageRoot "docs") -Force
     Copy-Item -Path ".\docs\nextjs-recipe.md" -Destination (Join-Path $packageRoot "docs") -Force
     Copy-Item -Path ".\docs\safety-boundaries.md" -Destination (Join-Path $packageRoot "docs") -Force
+    Copy-Item -Path ".\docs\tray-use-cases.md" -Destination (Join-Path $packageRoot "docs") -Force
+    Copy-Item -Path ".\docs\tray-test-plan.md" -Destination (Join-Path $packageRoot "docs") -Force
 
     if (Test-Path -Path $zipPath) {
         Remove-Item -Path $zipPath -Force

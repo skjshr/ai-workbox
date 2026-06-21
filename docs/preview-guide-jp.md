@@ -61,6 +61,28 @@ Usage:
 
 この段階ではプロジェクトファイルを触りません。
 
+## タスクトレイで見る
+
+zipを展開したフォルダで:
+
+```powershell
+.\bin\workbox-tray.exe
+```
+
+tray版でできること:
+
+- named workboxの一覧を見る
+- running workboxを右クリックメニューから止める
+- status画面で `inspect` を見る
+- inactive recordを `Prune` する
+
+tray版でしないこと:
+
+- 勝手にprocessをkillする
+- unrelatedな `node.exe` を探して消す
+- ファイルを削除する
+- セキュリティsandboxとして隔離する
+
 ## npm dev serverを箱で起動する
 
 プロジェクトフォルダへ移動して:

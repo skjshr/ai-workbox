@@ -28,7 +28,7 @@ Preview release:
 https://github.com/skjshr/ai-workbox/releases/tag/v0.1.0-preview
 ```
 
-The Preview Pack is a self-contained win-x64 zip. It includes `bin/workbox.exe` and `try-smoke.ps1`.
+The Preview Pack is a self-contained win-x64 zip. It includes `bin/workbox.exe`, `bin/workbox-tray.exe`, and `try-smoke.ps1`.
 
 ## What I Need To Learn
 
@@ -36,7 +36,7 @@ Please answer any of these:
 
 1. Is it clear what problem AI Workbox is solving?
 2. Can you name a situation where you would run it?
-3. Would you try `try-smoke.ps1`, `workbox doctor nextjs`, or `workbox run --name web -- npm run dev`?
+3. Would you try `try-smoke.ps1`, `workbox-tray.exe`, `workbox doctor nextjs`, or `workbox run --name web -- npm run dev`?
 4. Does the README make it clear that this is not a security sandbox?
 5. Would a Japanese setup/troubleshooting pack be useful enough to pay for?
 

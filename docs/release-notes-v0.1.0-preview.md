@@ -10,6 +10,7 @@ Initial Windows preview for local AI/dev-server process lifecycle control.
 - `doctor nextjs`: detect existing Next.js dev-server state without stopping it
 - `stop`: terminate a named workbox
 - `prune`: remove inactive Workbox state records
+- `workbox-tray.exe`: tray monitor for listing, inspecting, stopping, and pruning named workboxes
 
 ## Verified Locally
 
@@ -38,11 +39,13 @@ It is a Windows process lifecycle tool.
 The attached zip includes:
 
 - `bin/workbox.exe`
+- `bin/workbox-tray.exe`
 - `try-smoke.ps1`
 - Japanese preview guide
 - feedback form
 - Next.js recipe
 - safety boundary notes
+- tray use cases and tray test plan
 
 The preview pack is self-contained for win-x64. Testers should not need to install .NET Runtime separately.
 
