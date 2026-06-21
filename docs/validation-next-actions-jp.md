@@ -103,7 +103,9 @@ If they are willing to run it:
 Preview release:
 https://github.com/skjshr/ai-workbox/releases/tag/v0.1.0-preview
 
-試すなら、まず `workbox --help`、次にNext.js/npm環境で `workbox doctor nextjs` または `workbox run --name web -- npm run dev` だけで大丈夫です。
+Preview Packはwin-x64自己完結zipです。.NET Runtimeの事前インストールは不要です。
+
+試すなら、まずzipを展開して `.\try-smoke.ps1`、次にNext.js/npm環境で `workbox doctor nextjs` または `workbox run --name web -- npm run dev` だけで大丈夫です。
 ```
 
 ## Record Only This

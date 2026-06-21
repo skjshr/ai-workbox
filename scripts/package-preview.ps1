@@ -1,5 +1,6 @@
 param(
-    [string]$Version = "0.1.0-local"
+    [string]$Version = "0.1.0-local",
+    [switch]$FrameworkDependent
 )
 
 $ErrorActionPreference = "Stop"
@@ -9,7 +10,8 @@ $zipPath = Join-Path $root "artifacts\preview\AI-Workbox-Preview-Pack-$Version.z
 
 Push-Location $root
 try {
-    dotnet publish ".\src\AiWorkbox.Cli\AiWorkbox.Cli.csproj" -c Release -r win-x64 --self-contained false -o ".\artifacts\win-x64"
+    $selfContained = -not $FrameworkDependent
+    dotnet publish ".\src\AiWorkbox.Cli\AiWorkbox.Cli.csproj" -c Release -r win-x64 --self-contained:$selfContained -o ".\artifacts\win-x64"
     if ($LASTEXITCODE -ne 0) {
         exit $LASTEXITCODE
     }
@@ -26,6 +28,7 @@ try {
     Copy-Item -Path ".\README.md" -Destination $packageRoot -Force
     Copy-Item -Path ".\LICENSE" -Destination $packageRoot -Force
     Copy-Item -Path ".\SECURITY.md" -Destination $packageRoot -Force
+    Copy-Item -Path ".\scripts\preview-smoke.ps1" -Destination (Join-Path $packageRoot "try-smoke.ps1") -Force
     Copy-Item -Path ".\docs\preview-guide-jp.md" -Destination (Join-Path $packageRoot "docs") -Force
     Copy-Item -Path ".\docs\feedback-form-jp.md" -Destination (Join-Path $packageRoot "docs") -Force
     Copy-Item -Path ".\docs\nextjs-recipe.md" -Destination (Join-Path $packageRoot "docs") -Force

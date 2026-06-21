@@ -38,10 +38,13 @@ It is a Windows process lifecycle tool.
 The attached zip includes:
 
 - `bin/workbox.exe`
+- `try-smoke.ps1`
 - Japanese preview guide
 - feedback form
 - Next.js recipe
 - safety boundary notes
+
+The preview pack is self-contained for win-x64. Testers should not need to install .NET Runtime separately.
 
 ## Tester Request
 
