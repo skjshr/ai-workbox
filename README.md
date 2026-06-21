@@ -123,6 +123,8 @@ See [docs/verification.md](docs/verification.md).
 - [Verification](docs/verification.md)
 - [Release checklist](docs/release-checklist.md)
 - [Public launch plan](docs/public-launch-plan.md)
+- [GitHub publish runbook](docs/github-publish-runbook.md)
+- [v0.1.0 preview release notes](docs/release-notes-v0.1.0-preview.md)
 - [Commercial validation](docs/commercial-validation.md)
 - [Market test](docs/market-test.md)
 - [Paid preview checklist JP](docs/paid-preview-checklist-jp.md)

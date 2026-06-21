@@ -32,6 +32,7 @@ Use this before publishing AI Workbox or packaging a zip for testers.
 ## Public Repo Check
 
 - `.\scripts\public-check.ps1` passes.
+- `.\scripts\preflight-github-publish.ps1` passes before external publish.
 - Public docs do not include local usernames or private project paths.
 - Local verification notes are kept outside the public repo when necessary.
 - GitHub Actions `ci` should pass after publish.

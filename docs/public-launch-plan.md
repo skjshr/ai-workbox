@@ -5,6 +5,7 @@ AI Workbox should be published as a small technical tool, not as a startup landi
 ## Before GitHub Public
 
 - `.\scripts\public-check.ps1` passes.
+- `.\scripts\preflight-github-publish.ps1` passes.
 - Working tree is clean.
 - README says v0 is not a security sandbox.
 - `SECURITY.md` is present.
