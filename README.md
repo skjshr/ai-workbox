@@ -1,8 +1,8 @@
 # AI Workbox
 
-AI Workbox は、AI coding tool や dev server を Windows 上の名前付き workbox として起動、確認、停止する小さな CLI です。
+AI Workbox は、Codex や Claude Code まわりで増えがちな dev server と子プロセスを、名前付きの箱で起動して止めるための Windows CLI です。
 
-やることはかなり絞っています。
+やることは地味です。
 
 ```powershell
 workbox run --name web -- cmd /c "npm run dev"
@@ -11,40 +11,45 @@ workbox inspect web
 workbox stop web
 ```
 
-名前を付けて起動し、プロセスツリーを見て、まとめて止める。まずはそこだけです。
+起動する。見る。止める。
+
+まずはそれだけです。
 
 セキュリティ sandbox ではありません。
 
-## なぜ作ったか
+## 何に困っていたか
 
-AI coding を回していると、dev server、Node process、子プロセス、謎の port が残りがちです。
+AI に実装を投げていると、`npm run dev`、Next.js、Node の子プロセス、空いているのか分からない port が残りがちです。
 
-AI Workbox は、それらを「どの作業で起動したものか」分かる形に寄せます。壊れた状態を魔法のように直すツールではないです。散らかったプロセスを、少し見やすくして、止めやすくする道具です。
+ターミナルを閉じても残る。
 
-## Preview Pack を試す
+別の agent がまた dev server を立てる。
 
-まず試すなら、self-contained win-x64 の Preview Pack が楽です。
+気づいたら、どれを止めていいのか分からない。
+
+AI Workbox は、その混乱を少しだけ扱いやすくする道具です。プロセスに名前を付けて、後から見て、まとめて止めます。
+
+## Preview Pack
+
+試すなら release の Preview Pack が早いです。
 
 ```text
 https://github.com/skjshr/ai-workbox/releases/tag/v0.1.0-preview
 ```
 
-zip を展開して、これを実行します。
+zip を展開して、まずこれを実行します。
 
 ```powershell
 .\try-smoke.ps1
 ```
 
-中ではだいたいこれを確認します。
+この script は、help 表示、短い workbox の起動、`list`、`prune` までを確認します。
 
-- `bin\workbox.exe --help`
-- 短い smoke 用 workbox の起動
-- `list`
-- `prune`
+Preview Pack は self-contained win-x64 です。.NET Runtime を別で入れなくても動く想定です。
 
-Preview Pack は .NET Runtime の追加インストールなしで動くようにしています。
+## 使い方
 
-Node や Next.js の project で試すなら、こんな感じです。
+Node や Next.js の project で試すならこうです。
 
 ```powershell
 <preview-pack>\bin\workbox.exe run --name web -- cmd /c "npm run dev"
@@ -52,35 +57,31 @@ Node や Next.js の project で試すなら、こんな感じです。
 <preview-pack>\bin\workbox.exe stop web
 ```
 
-既に動いている Next.js dev server の状態だけ見ることもできます。
+すでに動いている Next.js dev server を見るだけなら、`doctor` を使います。
 
 ```powershell
 <preview-pack>\bin\workbox.exe doctor nextjs --path C:\dev\example-next-app
 ```
 
-tray monitor もあります。
+tray monitor も入っています。
 
 ```powershell
 <preview-pack>\bin\workbox-tray.exe
 ```
 
-tray app は、CLI で起動した名前付き workbox を見ます。box 一覧、process tree、停止、inactive record の掃除ができます。関係ない process を勝手に探して kill するものではありません。
+tray app は、CLI で起動した workbox を見ます。関係ない process を勝手に探して kill するものではありません。
 
-フィードバックは [issue #1](https://github.com/skjshr/ai-workbox/issues/1) に置いています。
+フィードバックは [issue #1](https://github.com/skjshr/ai-workbox/issues/1) にください。
 
 ## できること
 
-v0 でやることです。
-
 - root process と child process を Windows Job Object にまとめる
-- root process、child process tree、listening TCP port を見る
+- process tree と listening TCP port を見る
 - workbox をまとめて止める
 - timeout で止める
 - `%LOCALAPPDATA%\AiWorkbox\boxes` に小さい状態ファイルを書く
 
 ## やらないこと
-
-v0 ではここまでやりません。
 
 - file isolation
 - network isolation
@@ -90,6 +91,8 @@ v0 ではここまでやりません。
 - file 削除
 - registry 変更
 - admin 権限の要求
+
+つまり、悪い code を閉じ込める箱ではありません。散らかった開発プロセスを見つけやすくして、止めやすくする箱です。
 
 ## source から build
 
@@ -123,7 +126,9 @@ workbox prune
 
 box name に使えるのは、英数字、`-`、`_` です。
 
-`prune` は inactive な Workbox state record だけを消します。project file を消したり、process を止めたりはしません。
+`prune` は inactive な state record だけを消します。project file を消したり、process を止めたりはしません。
+
+## 出力例
 
 `inspect` の例です。
 
@@ -153,7 +158,7 @@ node_processes:
   command="C:\Program Files\nodejs\node.exe" ...\next\dist\server\lib\start-server.js
 ```
 
-## 置いているもの
+## docs
 
 - [検証ログ](docs/verification.md)
 - [Next.js recipe](docs/nextjs-recipe.md)
