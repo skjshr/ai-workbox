@@ -1,14 +1,8 @@
 # AI Workbox
 
-AI Workbox is a small Windows CLI experiment for running AI-coding-related commands inside a named local workbox.
+AI Workbox は、AI coding tool や dev server を Windows 上の名前付き workbox として起動、確認、停止する小さな CLI です。
 
-The v0 goal is narrow: start a command, group it with a Windows Job Object, list the box state, and stop the box as one unit.
-
-It is not a security sandbox.
-
-## Why
-
-AI coding tools make it easy to leave behind dev servers, Node processes, child processes, and unclear runtime state. AI Workbox gives those tasks a local lifecycle:
+やることはかなり絞っています。
 
 ```powershell
 workbox run --name web -- cmd /c "npm run dev"
@@ -17,30 +11,40 @@ workbox inspect web
 workbox stop web
 ```
 
-## Try The Preview Pack
+名前を付けて起動し、プロセスツリーを見て、まとめて止める。まずはそこだけです。
 
-For tester feedback, use the self-contained win-x64 Preview Pack:
+セキュリティ sandbox ではありません。
+
+## なぜ作ったか
+
+AI coding を回していると、dev server、Node process、子プロセス、謎の port が残りがちです。
+
+AI Workbox は、それらを「どの作業で起動したものか」分かる形に寄せます。壊れた状態を魔法のように直すツールではないです。散らかったプロセスを、少し見やすくして、止めやすくする道具です。
+
+## Preview Pack を試す
+
+まず試すなら、self-contained win-x64 の Preview Pack が楽です。
 
 ```text
 https://github.com/skjshr/ai-workbox/releases/tag/v0.1.0-preview
 ```
 
-Unzip it, then run:
+zip を展開して、これを実行します。
 
 ```powershell
 .\try-smoke.ps1
 ```
 
-That script runs:
+中ではだいたいこれを確認します。
 
 - `bin\workbox.exe --help`
-- a short named smoke workbox
+- 短い smoke 用 workbox の起動
 - `list`
 - `prune`
 
-No .NET Runtime install is required for the Preview Pack.
+Preview Pack は .NET Runtime の追加インストールなしで動くようにしています。
 
-To try it in a Node or Next.js project:
+Node や Next.js の project で試すなら、こんな感じです。
 
 ```powershell
 <preview-pack>\bin\workbox.exe run --name web -- cmd /c "npm run dev"
@@ -48,56 +52,58 @@ To try it in a Node or Next.js project:
 <preview-pack>\bin\workbox.exe stop web
 ```
 
-To inspect an existing Next.js dev-server state without stopping it:
+既に動いている Next.js dev server の状態だけ見ることもできます。
 
 ```powershell
 <preview-pack>\bin\workbox.exe doctor nextjs --path C:\dev\example-next-app
 ```
 
-To keep a tray monitor open:
+tray monitor もあります。
 
 ```powershell
 <preview-pack>\bin\workbox-tray.exe
 ```
 
-The tray app watches named workboxes started by the CLI. It lists boxes, inspects process trees, stops named boxes after confirmation, and prunes inactive records. It does not scan and kill unrelated processes.
+tray app は、CLI で起動した名前付き workbox を見ます。box 一覧、process tree、停止、inactive record の掃除ができます。関係ない process を勝手に探して kill するものではありません。
 
-Tester feedback is tracked in [issue #1](https://github.com/skjshr/ai-workbox/issues/1).
+フィードバックは [issue #1](https://github.com/skjshr/ai-workbox/issues/1) に置いています。
 
-## Safety Boundary
+## できること
 
-v0 does:
+v0 でやることです。
 
-- group a root process and child processes with a Windows Job Object
-- inspect the root process, child process tree, and listening TCP ports
-- stop the workbox as one unit
-- support timeout-based termination
-- write small local state files under `%LOCALAPPDATA%\AiWorkbox\boxes`
+- root process と child process を Windows Job Object にまとめる
+- root process、child process tree、listening TCP port を見る
+- workbox をまとめて止める
+- timeout で止める
+- `%LOCALAPPDATA%\AiWorkbox\boxes` に小さい状態ファイルを書く
 
-v0 does not:
+## やらないこと
 
-- isolate files
-- isolate network access
-- protect secrets or credentials
-- prevent a process from reading files available to the user
-- provide a security guarantee
-- delete files
-- modify the registry
-- require admin rights
+v0 ではここまでやりません。
 
-## Build From Source
+- file isolation
+- network isolation
+- secret や credential の保護
+- user が読める file を process から隠すこと
+- セキュリティ保証
+- file 削除
+- registry 変更
+- admin 権限の要求
+
+## source から build
 
 ```powershell
 dotnet build .\ai-workbox.sln
 ```
 
-## Package A Local Preview Pack
+## local Preview Pack を作る
 
 ```powershell
 .\scripts\package-preview.ps1 -Version "0.1.0-local"
 ```
 
-## Run From Source
+## source から実行
 
 ```powershell
 dotnet run --project .\src\AiWorkbox.Cli -- list
@@ -115,11 +121,11 @@ workbox stop <name>
 workbox prune
 ```
 
-Box names may contain letters, numbers, `-`, and `_`.
+box name に使えるのは、英数字、`-`、`_` です。
 
-`prune` removes inactive Workbox state records only. It does not delete project files or stop processes.
+`prune` は inactive な Workbox state record だけを消します。project file を消したり、process を止めたりはしません。
 
-Example `inspect` output from an npm dev server:
+`inspect` の例です。
 
 ```text
 box: inspect_probe
@@ -134,7 +140,7 @@ processes:
         - pid=103612 ppid=106144 name=node.exe
 ```
 
-Example `doctor nextjs` output from an existing Next.js dev server:
+`doctor nextjs` の例です。
 
 ```text
 doctor: nextjs
@@ -147,39 +153,15 @@ node_processes:
   command="C:\Program Files\nodejs\node.exe" ...\next\dist\server\lib\start-server.js
 ```
 
-## Product Boundary
+## 置いているもの
 
-This is not a template pack or portfolio-evidence project. The useful object is the local workbox behavior. Public README, releases, and docs are secondary proof that the tool exists.
-
-## Current Verification
-
-See [docs/verification.md](docs/verification.md).
-
-## Recipes
-
-- [Next.js](docs/nextjs-recipe.md)
-- [Preview Guide JP](docs/preview-guide-jp.md)
-- [Feedback Form JP](docs/feedback-form-jp.md)
-
-## Project Docs
-
-- [Model](docs/model.md)
+- [検証ログ](docs/verification.md)
+- [Next.js recipe](docs/nextjs-recipe.md)
+- [Preview guide JP](docs/preview-guide-jp.md)
+- [Feedback form JP](docs/feedback-form-jp.md)
 - [Safety boundaries](docs/safety-boundaries.md)
 - [Security policy](SECURITY.md)
-- [Verification](docs/verification.md)
 - [Release checklist](docs/release-checklist.md)
-- [Public launch plan](docs/public-launch-plan.md)
-- [GitHub publish runbook](docs/github-publish-runbook.md)
 - [v0.1.0 preview release notes](docs/release-notes-v0.1.0-preview.md)
-- [Commercial validation](docs/commercial-validation.md)
-- [Market test](docs/market-test.md)
-- [Market signal map](docs/market-signal-map.md)
 - [Tray use cases](docs/tray-use-cases.md)
 - [Tray test plan](docs/tray-test-plan.md)
-- [Tester validation log](docs/tester-validation-log.md)
-- [Validation next actions JP](docs/validation-next-actions-jp.md)
-- [Public tester call](docs/public-tester-call.md)
-- [Paid preview checklist JP](docs/paid-preview-checklist-jp.md)
-- [Tester outreach JP](docs/tester-outreach-jp.md)
-- [Career story](docs/career-story.md)
-- [Kernel decision](docs/kernel-decision.md)
